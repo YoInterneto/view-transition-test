@@ -1,0 +1,23 @@
+---
+import { games } from '../data/games'
+import Game from './Game.astro'
+
+console.log(games)
+---
+
+<ul class="game-list">
+    {
+        games.map(({id, name, image, description, year, studio}) => {
+            return (
+                <Game id={id} name={name} image={image} description={description} year={year} studio={studio}/>
+            )
+        })
+    }
+</ul>
+
+<style>
+    .game-list{
+        display: flex;
+        width: 100%;
+    }
+</style>

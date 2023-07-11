@@ -1,0 +1,15 @@
+---
+const {
+    id,
+    name,
+    image,
+    description,
+    year,
+    studio
+} = Astro.props
+---
+        
+
+<a href={`/${id}`} class={`link game-${id}`}>
+    <img class="image" src={image} alt={`Cover image for game ${name}`}>
+</a>
