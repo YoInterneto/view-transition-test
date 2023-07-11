@@ -1,0 +1,91 @@
+.container{
+    margin: 0 auto;
+    max-width: 768px;
+}
+
+.header{
+    text-align: center;
+    padding: 15px 0px;
+    background-color: burlywood;
+    view-transition-name: header;
+}
+
+.game-card{
+    box-sizing: border-box;
+    padding: 100px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.game-card .info{
+    width: 60%;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+.game-card .image{
+    width: 400px;
+    max-width: 40%;
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+@media(max-width: 568px){
+    .game-card .info{
+        text-align: center;
+        padding-right: 0px;
+        width: 100%;
+    }
+    .game-card .image{
+        max-width: 100%;
+    }
+    .game-card{
+        padding: 20px 10px;
+        flex-direction: column-reverse;
+    }
+}
+
+.link{
+    text-decoration: none ;
+    display: block;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+@media(max-width: 568px){
+    .link{
+        width: 100%;
+    }
+}
+.link .card{
+    position: relative;
+}
+.link .card .image{
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+.link .card .title{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: black;
+    padding: 10px 20px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    min-height: 3.6em;
+    line-height: 1.8em;
+}
+
+.game-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}

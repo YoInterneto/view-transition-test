@@ -5,19 +5,12 @@ import Game from './Game.astro'
 console.log(games)
 ---
 
-<ul class="game-list">
+<div class="game-list">
     {
-        games.map(({id, name, image, description, year, studio}) => {
+        games.map(({id, name, image, description, year, studio, color}) => {
             return (
-                <Game id={id} name={name} image={image} description={description} year={year} studio={studio}/>
+                <Game id={id} name={name} image={image} description={description} year={year} studio={studio} color={color}/>
             )
         })
     }
-</ul>
-
-<style>
-    .game-list{
-        display: flex;
-        width: 100%;
-    }
-</style>
+</div>

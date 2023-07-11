@@ -5,11 +5,25 @@ const {
     image,
     description,
     year,
-    studio
+    studio, 
+    color
 } = Astro.props
 ---
         
-
-<a href={`/${id}`} class={`link game-${id}`}>
-    <img class="image" src={image} alt={`Cover image for game ${name}`}>
+<a 
+    href={`/${id}`} 
+    class={`link game-${id}`}
+>
+    <div 
+        class='card' 
+        style={`background-color: ${color}; view-transition-name: bg-${id}`}
+    >
+        <img 
+            class="image" 
+            src={image} 
+            alt={`Cover image for game ${name}`}
+            style={`view-transition-name: game-${id}`}
+        />
+        <h2 class="title" style={`view-transition-name: title-${id}`}>{name}</h2>
+    </div>
 </a>

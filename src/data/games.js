@@ -3,9 +3,10 @@ export const games = [
         id: "celeste",
         name: "Celeste",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Celeste_box_art_full.png/1277px-Celeste_box_art_full.png",
-        description: "",
+        description: "Celeste es un videojuego perteneciente al género de plataformas creado por los desarrolladores de videojuegos canadienses Maddy Thorson y Noel Berry. El videojuego fue creado originalmente como un prototipo en cuatro días durante un game jam, y más tarde se expandió a un lanzamiento completo",
         year: "",
         studio: "",
+        color: "#d1249d",
     },
     {
         id: "spiderman",
@@ -14,6 +15,7 @@ export const games = [
         description: "",
         year: "",
         studio: "",
+        color: "#a59e28",
     },
     {
         id: "god-of-war",
@@ -22,6 +24,7 @@ export const games = [
         description: "",
         year: "2018",
         studio: "",
+        color: "#795e48",
     },
     {
         id: "blasphemous",
@@ -30,14 +33,16 @@ export const games = [
         description: "",
         year: "",
         studio: "",
+        color: "#2497a6",
     },
     {
         id: "zelda-totk",
         name: "The Legend of Zelda Tears Of The Kingdom",
-        image: "",
+        image: "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
         description: "",
         year: "",
         studio: "",
+        color: "#c06726",
     },
     {
         id: "mario-odissey",
@@ -46,5 +51,6 @@ export const games = [
         description: "",
         year: "2023",
         studio: "",
+        color: "#5f2594",
     },
 ]

@@ -10,33 +10,99 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="../styles/main.css" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="view-transition" content="same-origin" />
 	</head>
 	<body>
-		<div class="container">
+		<div class="content">
 			<slot />
 		</div>
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			white 60%
+		);
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+		background-color: #f6f6f6;
 	}
 	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
-	.container{
-		margin: 0 auto;
-		max-width: 1280px;
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-from-right {
+		from {
+			transform: translateX(30px);
+		}
+	}
+
+	@keyframes slide-to-left {
+		to {
+			transform: translateX(-30px);
+		}
+	}
+
+	::view-transition-old(root) {
+		animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+			300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	}
+
+	::view-transition-new(root) {
+		animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+			300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 	}
 </style>
+
+<script>
+	if (document.startViewTransition) {
+		window.navigation.addEventListener("navigate", (e) => {
+			const url = new URL(e.destination.url);
+
+			if (url.origin !== location.origin) return;
+
+			e.intercept({
+				async handler() {
+					// Interrupt the navigation event and get page HTML
+					const response = await fetch(url.pathname);
+					const data = await response.text();
+
+					const page = data.match(
+						/<body[^>]*>([^<]*(?:(?!<\/?body)<[^<]*)*)<\/body\s*>/i
+					)[1];
+					console.log(page);
+					document.startViewTransition(() => {
+						// Load the content of the page inside our body
+						document.body.innerHTML = page;
+						document.documentElement.scrollTop = 0;
+					});
+				},
+			});
+		});
+	}
+</script>

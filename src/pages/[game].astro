@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {games} from '../data/games'
+
+const { game } = Astro.params
+const props = games.find((item) => item.id === game)
+if(!props){
+    return Astro.redirect('/')
+}
+---
+
+<Layout title={'Game - '+ props.name}>
+    <h1 class="header">My games</h1>
+    <main style={`background-color: ${props.color}; view-transition-name: bg-${props.id}`}>
+        <div class="container">
+            <div class="game-card">
+                <div class="info">
+                    <h1 style={`view-transition-name: title-${props.id}`}>{props.name}</h1>
+                    <p>{props.description}</p>
+                </div>
+                <img 
+                    class="image" 
+                    src={props.image} 
+                    alt={`Cover image for game ${props.name}`}
+                    style={`view-transition-name: game-${props.id}`}
+                />
+            </div>
+        </div>
+    </main>
+</Layout>
