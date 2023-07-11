@@ -32,17 +32,16 @@
     object-fit: cover;
 }
 @media(max-width: 568px){
+    .game-card{
+        padding: 20px 10px;
+        flex-direction: column-reverse;
+    }
+
+    .game-card .image{ max-width: 100%; }
     .game-card .info{
         text-align: center;
         padding-right: 0px;
         width: 100%;
-    }
-    .game-card .image{
-        max-width: 100%;
-    }
-    .game-card{
-        padding: 20px 10px;
-        flex-direction: column-reverse;
     }
 }
 
